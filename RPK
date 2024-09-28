@@ -1,0 +1,56 @@
+#include <dht.h>
+
+dht DHT;
+
+#define DHT11_PIN A0
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int chk = DHT.read11(DHT11_PIN);
+  Serial.print("Suhu: ");
+  Serial.print(DHT.temperature);
+  Serial.print("°C | Kelembaban: ");
+  Serial.print(DHT.humidity);
+  Serial.println("%");
+  delay(2000);
+}
+
+
+Kembangkan Coding Tersebut Dengan Kondisi Jika Suhu > 30 Maka Muncul Peringatan Di Serial Monitor "Suhu Terlalu Panas":
+
+
+
+
+
+#include <dht.h>
+
+dht DHT;
+
+#define DHT11_PIN A0
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int chk = DHT.read11(DHT11_PIN);
+  Serial.print("Suhu: ");
+  Serial.print(DHT.temperature);
+  Serial.print("°C | Kelembaban: ");
+  Serial.print(DHT.humidity);
+  Serial.println("%");
+
+  if(DHT.temperature > 30){
+    Serial.println("Suhu Terlalu Panas");
+  }
+
+  delay(2000);
+}
+
+
+Dengan penambahan kondisi di dalam loop(), kode akan memeriksa suhu setiap kali loop dijalankan. Jika suhu melebihi 30°C, pesan "Suhu Terlalu Panas" akan muncul di Serial Monitor.
+ 
+ 
